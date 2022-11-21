@@ -43,4 +43,8 @@ public class Member {
 	public void setCreatedate(String createdate) {
 		this.createdate = createdate;
 	}
+	public Object getPw() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

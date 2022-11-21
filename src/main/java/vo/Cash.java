@@ -5,6 +5,7 @@ public class Cash {
 	// Map타입 사용 안할시 private Category category; 필요! 
 	private int categoryNo; // FK -> INNER JOIN -> Map타입
 	private long cashPrice;
+	private String cashDate;
 	private String cashMemo;
 	private String updatedate;
 	private String createdate;
@@ -25,6 +26,12 @@ public class Cash {
 	}
 	public void setCashPrice(long cashPrice) {
 		this.cashPrice = cashPrice;
+	}
+	public String getCashDate() {
+		return cashDate;
+	}
+	public void setCashDate(String cashDate) {
+		this.cashDate = cashDate;
 	}
 	public String getCashMemo() {
 		return cashMemo;
