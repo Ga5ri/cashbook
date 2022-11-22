@@ -23,10 +23,11 @@
 	int year = 0;
 	int month = 0;
 	
+	// year,month null 값시 오늘날짜 출력
 	if(request.getParameter("year") == null || request.getParameter("month")==null ){
 		Calendar today = Calendar.getInstance(); // 오늘날짜
 		year = today.get(Calendar.YEAR);
-		month = today.get(Calendar.MONTH);
+		month = today.get(Calendar.MONTH); // 0~11
 	} else {
 		year = Integer.parseInt(request.getParameter("year"));
 		month = Integer.parseInt(request.getParameter("month"));
@@ -46,20 +47,24 @@
 	targetDate.set(Calendar.YEAR, year);
 	targetDate.set(Calendar.MONTH, month);
 	targetDate.set(Calendar.DATE, 1);
+	
 	// firstDay는 1일의 요일
 	int firstDay = targetDate.get(Calendar.DAY_OF_WEEK); // 요일 (일 1, 월 2, 화 3, ... 토 7)
-	// begin blank개수는 firstDay - 1
 	
 	// 마지막날짜
 	int lastDate = targetDate.getActualMaximum(Calendar.DATE);
+	
+	// begin blank개수는 firstDay - 1
 	// 달력 출력테이브르이 시작 공백셀(td)과 마지막 공백셀(td)의 개수
 	int beginBlank = firstDay - 1;
 	int endBlank = 0; //  beginBlank + lastDate + endBlank -> 7로 나누어 떨어진다 -> totalTd
 	if((beginBlank + lastDate)%7 != 0){
 		endBlank = 7 - ((beginBlank + lastDate) % 7);
 	}
+	
 	// 전체 td의 개수 : 7로 나누어 떨어져야 한다.
 	int totalTd = beginBlank + lastDate + endBlank;
+	
 	// Model 호출 : 일별 cash 목록
 	CashDao cashDao = new CashDao();
 	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(loginMember.getMemberId(), year, month+1);

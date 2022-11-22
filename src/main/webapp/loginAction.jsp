@@ -15,15 +15,12 @@
 	}
 	
 	String memberId = request.getParameter("memberId");
-	System.out.println("memberID:REQUEST" + memberId);
 	String memberPw = request.getParameter("memberPw");
-	System.out.println("memberPw:REQUEST" + memberPw);
 	
 
-	
 	Member paramMember = new Member(); // 모델 호출시 매개값
-	paramMember.setMemberId(request.getParameter("memberId"));
-	paramMember.setMemberPw(request.getParameter("memberPw"));
+	paramMember.setMemberId(memberId);
+	paramMember.setMemberPw(memberPw);
 	
 	System.out.println("getmemberID:REQUEST" + paramMember.getMemberId());
 	System.out.println("getmemberPw:REQUEST" + paramMember.getMemberPw());

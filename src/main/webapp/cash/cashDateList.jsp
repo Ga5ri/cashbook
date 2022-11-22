@@ -4,8 +4,16 @@
 <%@ page import = "vo.*"%>
 <%
 	// Controller
+	if(session.getAttribute("loginMember") == null) {
+		// 로그인되지 않은 상태
+		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
+		return;
+	} 
+	
+	//session에 저장된 멤버(현재 로그인 사용자)
 	Member loginMember = (Member)session.getAttribute("loginMember");
 	System.out.println(loginMember+"<-session");
+	
 	int year = Integer.parseInt(request.getParameter("year"));
 	int month = Integer.parseInt(request.getParameter("month"));
 	int date = Integer.parseInt(request.getParameter("date"));
@@ -14,9 +22,10 @@
 	
 	CategoryDao categoryDao = new CategoryDao();
 	ArrayList<Category> categoryList = categoryDao.selectCategoryList();
-	
+
 	CashDao cashDao = new CashDao();
-	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByDate(loginMember.getMemberId(), year, month, date);
+	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByDate(loginMember.getMemberId(), year, month+1, date);
+	
 	// View
 %>
 <!DOCTYPE html>
@@ -38,13 +47,17 @@
 							for(Category c : categoryList){
 						%>
 								<option value="<%=c.getCategoryNo()%>">
-									<%=c.getCategoryKind()%> <%=c.getCategoryName()%>
+									(<%=c.getCategoryKind()%>) <%=c.getCategoryName()%>
 								</option>
 						<%		
 							}
 						%>
 					</select>
 				</td>
+			</tr>
+			<tr>
+				<td>cashPrice</td>
+				<td><input type="text" name="cashPrice" value=""></td>
 			</tr>
 			<tr>
 				<td>cashDate</td>
@@ -69,20 +82,20 @@
 			<th>수정</th> <!-- /cash/updateCashForm.jsp?cashNo= -->
 			<th>삭제</th> <!-- /cash/deleteCash.jsp?cashNo= -->
 		</tr>
+		<tr>
 		<%
 			for(HashMap<String, Object> m : list){
 		%>
-				<tr>
 					<td><%=m.get("categoryKind")%></td>
 					<td><%=m.get("categoryName")%></td>
 					<td><%=m.get("cashPrice")%></td>
 					<td><%=m.get("cashMemo")%></td>
 					<td><a href="">수정</a></td>
 					<td><a href="">삭제</a></td>
-				</tr>
 		<%		
 			}
 		%>
+		</tr>
 	</table>
 </body>
 </html>

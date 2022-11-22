@@ -16,10 +16,10 @@ public class MemberDao {
 		--> 입력값과 반환값 결정해야 한다
 		--> 입력값X, 반환값은 Connection타입의 결과값이 남아야한다.
 		*/
-		Member resultMember = new Member();
-		
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
+		
+		Member resultMember = null;
 		String sql = "SELECT member_id memberId, member_name memberName FROM member WHERE member_id = ? AND member_pw = PASSWORD(?)";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, paramMember.getMemberId());
@@ -30,6 +30,7 @@ public class MemberDao {
 		ResultSet rs = stmt.executeQuery();
 	
 		if(rs.next()) {
+			resultMember = new Member();
 			resultMember.setMemberId(rs.getString("memberId"));
 			resultMember.setMemberName(rs.getString("memberName"));
 			System.out.println("rs실행여부");
