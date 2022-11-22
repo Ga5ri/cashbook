@@ -1,26 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*"%>
 <%@ page import = "dao.*"%>
+<%@ page import = "vo.*"%>
 <%
 	// Controller : session, request
 	// request 년 + 월
 	request.setCharacterEncoding("UTF-8");
-	/*
+	
 	if(session.getAttribute("loginMember") == null) {
 		// 로그인되지 않은 상태
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
 	} 
 
-	// 안정장치
-	if(request.getParameter("memberId")==null 
-			|| request.getParameter("memberPw")==null
-			|| request.getParameter("memberId").equals("") 
-			|| request.getParameter("memberPw").equals("")){
-		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
-		return;
-	}
-	*/
+	// session에 저장된 멤버(현재 로그인 사용자)
+	Member loginMember = (Member)session.getAttribute("loginMember");
+	String loginMemberId = loginMember.getMemberId();
+	String loginMemberName = loginMember.getMemberName();
+	System.out.println(loginMemberId);
+	System.out.println(loginMemberName);
 	
 	int year = 0;
 	int month = 0;
@@ -64,7 +62,7 @@
 	int totalTd = beginBlank + lastDate + endBlank;
 	// Model 호출 : 일별 cash 목록
 	CashDao cashDao = new CashDao();
-	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(year, month+1);
+	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(loginMember.getMemberId(), year, month+1);
 	// View : 달력출력 + 일별 cash 목록 출력
 %>
 <!DOCTYPE html>
@@ -76,13 +74,21 @@
 	<body>
 		<div>
 			<!--  로그인 정보 (세션 loginMember 변수) 출력 -->
+			<span><%=loginMemberName%>님 반갑습니다.</span>
+			<a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
 		</div>
 		<div>
+			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">
+				&#8701;이전달
+			</a>
 			<%=year%> 년 <%=month+1%> 월
+			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>">
+				다음달&#8702;
+			</a>
 		</div>
 		<!-- 달력 출력 -->
 		<div>
-			<table>
+			<table border=1>
 				<tr>
 					<th>일</th>
 					<th>월</th>
@@ -101,7 +107,26 @@
 								int date = i - beginBlank;
 								if(date > 0 && date <= lastDate){				
 					%>
-									<%=date%>
+									<div>
+										<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+											<%=date%>
+										</a>
+									</div>
+									<div>
+										<%
+											for(HashMap<String, Object> m : list){ // 해당 월에 일수를 date와 비교
+												String cashDate = (String)(m.get("cashDate"));
+												if(Integer.parseInt(cashDate.substring(8)) == date){
+										%>
+													[<%=(String)(m.get("categoryKind"))%>]
+													<%=(Long)(m.get("cashPrice"))%>원
+													<%=(String)(m.get("categoryName"))%>
+													<br>
+										<%	
+												}
+											}
+										%>
+									</div>
 					<%			
 								}
 					%>
@@ -116,22 +141,6 @@
 					%>
 				</tr>
 			</table>
-		</div>
-		<div>
-			<%
-				for(HashMap<String , Object> m : list){
-			%>
-					<div>
-						<%=(Integer)(m.get("cashNo"))%>
-						<%=(String)(m.get("cashDate"))%>
-						<%=(Integer)(m.get("cashPrice"))%>
-						<%=(Integer)(m.get("categoryNo"))%>
-						<%=(String)(m.get("categoryKind"))%>
-						<%=(String)(m.get("categoryName"))%>
-					</div>
-			<%		
-				}
-			%>
 		</div>
 	</body>
 </html>
