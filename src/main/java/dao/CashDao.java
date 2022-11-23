@@ -6,7 +6,7 @@ import util.*;
 
 
 public class CashDao {
-	public ArrayList<HashMap<String, Object>> slectCashListByMonth(String memberId, int year, int month) throws Exception {
+	public ArrayList<HashMap<String, Object>> selectCashListByMonth(String memberId, int year, int month) throws Exception {
 		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		
 		// 1. DB 연결
@@ -40,7 +40,7 @@ public class CashDao {
 		return list;		
 	}
 	
-	public ArrayList<HashMap<String, Object>> slectCashListByDate(String memberId, int year, int month, int date) throws Exception {
+	public ArrayList<HashMap<String, Object>> selectCashListByDate(String memberId, int year, int month, int date) throws Exception {
 		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		
 		// 1. DB 연결
