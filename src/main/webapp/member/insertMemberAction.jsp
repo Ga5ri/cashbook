@@ -4,34 +4,42 @@
 <%
 	// Controller
 	request.setCharacterEncoding("utf-8");
+
+	// 안전장치
+	if(request.getParameter("memberId")==null || request.getParameter("memberId").equals("")
+		|| request.getParameter("memberName")==null || request.getParameter("memberName").equals("")
+		|| request.getParameter("memberPw")==null || request.getParameter("memberPw").equals("")){
+		response.sendRedirect(request.getContextPath()+"/member/insertMemberForm.jsp");
+		return;
+	}
 	String memberId = request.getParameter("memberId");
 	String memberPw = request.getParameter("memberPw");
 	String memberName = request.getParameter("memberName");
-	// 안전장치
-	if(request.getParameter("memberName")==null||request.getParameter("memberName").equals("")||request.getParameter("memberId")==null
-			||request.getParameter("memberId").equals("")||request.getParameter("memberPw")==null||request.getParameter("memberPw").equals("")){
-		response.sendRedirect(request.getContextPath()+"/insertMemberForm.jsp");
-		return;
-	}
-	// Model
-	Member paramMember = new Member(); // 모델 호출시 매개값
-	paramMember.setMemberId(request.getParameter("memberId"));
-	paramMember.setMemberPw(request.getParameter("memberPw"));
-	paramMember.setMemberName(request.getParameter("memberName"));
 	
+	Member member = new Member();// 모델 호출시 매개값
+	member.setMemberId(memberId);
+	member.setMemberPw(memberPw);
+	member.setMemberName(memberName);
+	
+	// Model
 	// 분리된 Model 호출
 	MemberDao memberDao = new MemberDao();
-	Member resultMember = memberDao.login(paramMember);
-	System.out.println(memberDao.login(paramMember)+"<-resultMember");
-	// View
-%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+	if(memberDao.selectMemberIdCk(memberId)){
+		System.out.println("중복된 아이디");
+		response.sendRedirect(request.getContextPath()+"/member/insertMemberForm.jsp");
+		return;
+	}
+	int row = memberDao.insertMember(member);
+	System.out.println(row+"<-insertMemberAction row");
+	if(row == 1){
+		System.out.println("회원가입 성공");
+	} else {
+		System.out.println("회원가입 실패");
+	}
+	
+	
+	String redirectUrl = "/loginForm.jsp";
 
-</body>
-</html>
+	// View
+	response.sendRedirect(request.getContextPath()+redirectUrl);
+%>

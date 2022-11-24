@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +8,7 @@
 <body>
 	<div>
 		<h1>회원가입</h1>
-		<form action="<%=request.getContextPath()%>/insertMemberAction.jsp" method="post">
+		<form action="<%=request.getContextPath()%>/member/insertMemberAction.jsp" method="post">
 			<table>
 				<tr>
 					<td>아이디</td>

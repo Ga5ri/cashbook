@@ -80,7 +80,15 @@
 		<div>
 			<!--  로그인 정보 (세션 loginMember 변수) 출력 -->
 			<span><%=loginMemberName%>님 반갑습니다.</span>
+			<a href="<%=request.getContextPath()%>/member/memberOne.jsp">마이페이지</a>
 			<a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
+			<%
+				if(loginMember.getMemberLevel() > 0){
+			%>
+					<a href="<%=request.getContextPath()%>/admin/adminMain.jsp">관리자 페이지</a>
+			<%		
+				}
+			%>
 		</div>
 		<div>
 			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">
@@ -123,7 +131,7 @@
 												String cashDate = (String)(m.get("cashDate"));
 												if(Integer.parseInt(cashDate.substring(8)) == date){
 										%>
-													[<%=(String)(m.get("categoryKind"))%>]
+													(<%=(String)(m.get("categoryKind"))%>)
 													<%=(Long)(m.get("cashPrice"))%>원
 													<%=(String)(m.get("categoryName"))%>
 													<br>
