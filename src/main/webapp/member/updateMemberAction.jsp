@@ -4,7 +4,7 @@
 <%@ page import="vo.*" %>
 <%
 	// Controller
-	request.setCharacterEncoding("UTF-8");	//한글 인코딩
+	request.setCharacterEncoding("utf-8");
 	if(session.getAttribute("loginMember") == null) {
 		// 로그인되지 않은 상태
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");

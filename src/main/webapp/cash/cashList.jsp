@@ -80,15 +80,16 @@
 		<div>
 			<!--  로그인 정보 (세션 loginMember 변수) 출력 -->
 			<span><%=loginMemberName%>님 반갑습니다.</span>
-			<a href="<%=request.getContextPath()%>/member/memberOne.jsp">마이페이지</a>
-			<a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
 			<%
+				System.out.println(loginMember.getMemberLevel()+"<--level");
 				if(loginMember.getMemberLevel() > 0){
 			%>
 					<a href="<%=request.getContextPath()%>/admin/adminMain.jsp">관리자 페이지</a>
 			<%		
 				}
 			%>
+			<a href="<%=request.getContextPath()%>/member/memberOne.jsp">마이페이지</a>
+			<a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
 		</div>
 		<div>
 			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">

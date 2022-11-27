@@ -22,8 +22,9 @@
 	paramMember.setMemberId(memberId);
 	paramMember.setMemberPw(memberPw);
 	
-	System.out.println("getmemberID:REQUEST" + paramMember.getMemberId());
-	System.out.println("getmemberPw:REQUEST" + paramMember.getMemberPw());
+	System.out.println("getmemberlevel:" + paramMember.getMemberLevel());
+	System.out.println("getmemberID:" + paramMember.getMemberId());
+	System.out.println("getmemberPw:" + paramMember.getMemberPw());
 
 	
 	// 분리된 Model 호출

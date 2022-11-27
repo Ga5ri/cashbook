@@ -120,7 +120,7 @@ public class CashDao {
 		stmt.setInt(1, cashNo);
 		ResultSet rs = stmt.executeQuery();
 		
-		if(rs.next()) { // rs값 있으면 정보 받아오기
+		if(rs.next()) { 
 			cash.put("cashNo", cashNo);
 			cash.put("cashDate", rs.getString("cashDate"));
 			cash.put("cashPrice", rs.getLong("cashPrice"));

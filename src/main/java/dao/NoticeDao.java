@@ -20,17 +20,40 @@ public class NoticeDao {
 			count = countRs.getInt("COUNT(*)");
 			System.out.println(count+"<-전체행");
 		}
-		// 과제
 		dbUtil.close(countRs, countStmt, conn);
 		return count;
 	}
 	
+	public int deleteNotcie(Notice notice) throws Exception {
+		String sql = "DELETE FROM notice WHERE notice_no = ?";
+		return 0;
+	}
 	
-	// loginFrom.jsp 공지목록
+	public int updateNotice(Notice notice) throws Exception {
+		String sql = "UPDATE notice SET notice_memo = ? WHERE notice_no = ?";
+		return 0;
+	}
+	
+	public int insertNotice(Notice notice) throws Exception {
+		String sql = "INSERT notice(notice_memo, updatedate, createdate)"
+					+" VALUES(?, NOW(), NOW())";
+		return 0;
+	}
+	
+	// 마지막 페이지를 구할려면 전체row수가 필요
+	public int selectNoitceCount() {
+		int count = 0;
+		//
+		return count;
+	}
+	
+	// loginForm.jsp 공지목록
 	public ArrayList<Notice> selectNoticeListByPage(int beginRow, int rowPerPage) throws Exception {
 		ArrayList<Notice> list = new ArrayList<Notice>();
+		// DB 연결
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
+		// 쿼리문
 		String sql = "SELECT notice_no noticeNo, Notice_memo noticeMemo, createdate FROM notice ORDER BY createdate DESC LIMIT ?, ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, beginRow);

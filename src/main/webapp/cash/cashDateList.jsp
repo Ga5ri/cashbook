@@ -50,7 +50,7 @@
 				<tr>
 					<td>날짜</td>
 					<td>
-						<input type="text" name="cashDate" value="<%=year+"년"%> <%=month+"월"%> <%=date+"일"%>" readonly="readonly">
+						<input type="text" name="cashDate" value="<%=year%>-<%=month%>-<%=date%>" readonly="readonly">
 					</td>
 				</tr>
 				

@@ -1,12 +1,36 @@
 package dao;
-
-import vo.Member;
-
+import java.util.*;
+import vo.*;
 import java.sql.*;
-
 import util.DBUtil;
 
 public class MemberDao {
+	// 관리자 : 멤버레벨수정
+		public int updateMemberLevel(Member member) {
+			return 0;
+		}
+		
+		// 관리자 : 멤버수
+		public int selectMemberCount() {
+			return 0;
+		}
+		// 관리자 : 멤버 리스트
+		public ArrayList<Member> selectMemberListByPage(int beginRow, int rowPerPage) throws Exception {
+			/*
+			 ORDER BY createdate DESC
+			 */
+			return null;
+		}
+		// 관리자 : 멤버 강퇴
+		public int deleteMemberByAdmin(Member member) {
+			return 0;
+		}
+		
+		// 회원탈퇴
+		public int deleteMember(Member member) {
+			return 0;
+		}
+	
 	// login
 	public Member login(Member paramMember) throws Exception {
 		// DB연결
@@ -17,32 +41,29 @@ public class MemberDao {
 		Member resultMember = null;
 		
 		// 쿼리문 (memberLevel추가)
-		String sql = "SELECT member_id memberId, member_level memberLevel, member_name memberName FROM member WHERE member_id = ? AND member_pw = PASSWORD(?)";
+		String sql = "SELECT member_id memberId, member_name memberName, member_level memberLevel FROM member WHERE member_id = ? AND member_pw = PASSWORD(?)";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, paramMember.getMemberId());
 		stmt.setString(2, paramMember.getMemberPw());
 		
-		System.out.println("param.get실행여부Id"+paramMember.getMemberId());
-		System.out.println("param.get실행여부Pw"+paramMember.getMemberPw());
 		ResultSet rs = stmt.executeQuery();
 	
 		if(rs.next()) {
 			resultMember = new Member();
 			resultMember.setMemberId(rs.getString("memberId"));
 			resultMember.setMemberName(rs.getString("memberName"));
-			System.out.println("rs실행여부");
+			resultMember.setMemberLevel(rs.getInt("memberLevel"));
 		}
 		
 		rs.close();
 		stmt.close();
 		conn.close();
-		System.out.println("resultgetMenam"+resultMember.getMemberId());
-		System.out.println("resultgetMenam"+resultMember.getMemberName());
 		return resultMember;
 	}
 	
 	// 회원가입 1) id중복확인 2) 회원가입 -> 쿼리 1개당 1개의 메서드가 좋다
 	
+	// id 중복확인
 	// 반환값 true:존재하는ID, false:사용가능
 	public boolean selectMemberIdCk(String memberId) throws Exception {
 		boolean result = false;
@@ -61,6 +82,7 @@ public class MemberDao {
 		return result;
 	}
 	
+	// 회원가입
 	public int insertMember(Member member) throws Exception {
 		int row = 0;
 		// DB연결
