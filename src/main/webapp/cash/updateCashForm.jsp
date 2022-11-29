@@ -76,6 +76,9 @@
 			</table>
 			<button type="submit">수정</button>
 		</form>
+		<div>
+			<a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
+		</div>
 	</div>
 </body>
 </html>

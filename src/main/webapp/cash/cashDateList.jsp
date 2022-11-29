@@ -109,6 +109,9 @@
 				}
 			%>
 		</table>
+		<div>
+			<a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
+		</div>
 	</div>
 </body>
 </html>

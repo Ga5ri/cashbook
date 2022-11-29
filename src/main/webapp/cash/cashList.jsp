@@ -3,9 +3,8 @@
 <%@ page import = "dao.*"%>
 <%@ page import = "vo.*"%>
 <%
-	// Controller : session, request
-	// request 년 + 월
-	request.setCharacterEncoding("UTF-8");
+	// Controller
+	request.setCharacterEncoding("utf-8");
 	
 	if(session.getAttribute("loginMember") == null) {
 		// 로그인되지 않은 상태
@@ -153,8 +152,10 @@
 							}
 						}
 					%>
-				</tr>
 			</table>
+		</div>
+		<div>
+			<jsp:include page="/inc/footer.jsp"></jsp:include>
 		</div>
 	</body>
 </html>

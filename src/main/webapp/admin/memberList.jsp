@@ -4,7 +4,7 @@
 <%@ page import = "java.util.*" %>
 <%
 	// Controller
-	Member loginMember = (Member)session.getAttribute("login");
+	Member loginMember = (Member)session.getAttribute("loginMember");
 	if(loginMember == null || loginMember.getMemberLevel() < 1) {
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;

@@ -86,7 +86,7 @@ public class CashDao {
 	// 호출 : insertCashAction.jsp
 	public int insertCash(String memberId, String cashMemo, String cashDate, int categoryNo, long cashPrice) throws Exception {
 			
-		int icResult = 0;
+		int isResult = 0;
 		
 		// DB연결	
 		DBUtil dbUtil = new DBUtil();
@@ -101,11 +101,11 @@ public class CashDao {
 		stmt.setInt(4, categoryNo);
 		stmt.setLong(5, cashPrice);
 		
-		icResult = stmt.executeUpdate();
+		isResult = stmt.executeUpdate();
 			
 		stmt.close();
 		conn.close();
-		return icResult;
+		return isResult;
 		}
 
 	// 호출 : updateCashAction.jsp (가계부내역 출력)

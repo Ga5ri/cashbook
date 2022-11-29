@@ -20,9 +20,9 @@
 	NoticeDao noticeDao = new NoticeDao();
 	ArrayList<Notice> list = noticeDao.selectNoticeListByPage(beginRow, rowPerPage);
 
-	// int lastPage = 0; <--과제
+	// lastPage
 	int lastPage = noticeDao.selectNoticeCount() / rowPerPage;
-	if( noticeDao.selectNoticeCount() % rowPerPage != 0) {
+	if(noticeDao.selectNoticeCount() % rowPerPage != 0) {
 		lastPage+=1;
 	}
 %>
@@ -53,24 +53,24 @@
 			%>
 		</table>
 		<div>
-		<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1">처음</a>
-		<%
-			if(currentPage > 1) {				
-		%>
-				<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage-1%>">이전</a>
-		<%
-			}
-		%>
-			<span><%=currentPage%></span>
-		<%
-			if(currentPage < lastPage) {
-		%>
-				<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage+1%>">다음</a>	
-		<%
-			}
-		%>
-		<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>">마지막</a>
-	</div>
+			<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1">처음</a>
+			<%
+				if(currentPage > 1) {				
+			%>
+					<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage-1%>">이전</a>
+			<%
+				}
+			%>
+				<span><%=currentPage%></span>
+			<%
+				if(currentPage < lastPage) {
+			%>
+					<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage+1%>">다음</a>	
+			<%
+				}
+			%>
+			<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>">마지막</a>
+		</div>
 	</div>
 	<form action="<%=request.getContextPath()%>/loginAction.jsp" method="post">
 		<table>

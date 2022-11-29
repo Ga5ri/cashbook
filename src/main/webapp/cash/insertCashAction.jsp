@@ -26,8 +26,8 @@
 
 	// Model
 	CashDao cashDao = new CashDao();
-	int icResult = cashDao.insertCash(memberId, cashMemo, cashDate, categoryNo, cashPrice);
-	if(icResult != 0){
+	int isResult = cashDao.insertCash(memberId, cashMemo, cashDate, categoryNo, cashPrice);
+	if(isResult != 0){
 		System.out.println("추가 성공");
 	} else {
 		System.out.println("추가 실패");
