@@ -13,27 +13,21 @@
 	
 	//session에 저장된 멤버(현재 로그인 사용자)
 	Member loginMember = (Member)session.getAttribute("loginMember");
-	String loginMemberId = loginMember.getMemberId();
-	String memberName = request.getParameter("memberName");
-
-	Member member = new Member();
-	member.setMemberId(loginMemberId);
-	member.setMemberName(memberName);
+	loginMember.setMemberId(request.getParameter("memberId"));
+	loginMember.setMemberName(request.getParameter("memberName"));
+	loginMember.setMemberPw(request.getParameter("memberPw"));
 	
 	// Model
 	// MemberDao 호출
 	MemberDao memberDao = new MemberDao();
-	
-	int row = memberDao.updateMember(member, loginMemberId);
-	System.out.println(row+"<-updateMemberAction row");
-	if(row == 1){
-		System.out.println("닉네임 수정성공");
-	}else {
-		System.out.println("닉네임 수정실패");
+	Member updateMember = memberDao.updateMember(loginMember);
+	if(updateMember != null) {
+		session.setAttribute("loginMember", loginMember);
+		String targetUrl = "/member/memberOne.jsp";
+		response.sendRedirect(request.getContextPath()+targetUrl);
+	} else {
+		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp");
 	}
 
-
-	// View 대신 redirect
-	String targetUrl = "/member/memberOne.jsp";
-	response.sendRedirect(request.getContextPath()+targetUrl);
+	// View
 %>

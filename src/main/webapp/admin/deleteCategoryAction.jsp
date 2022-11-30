@@ -11,31 +11,13 @@
 		return;
 	}
 	
-	String categoryNo = request.getParameter("categoryNo");
+	int categoryNo= Integer.parseInt(request.getParameter("categoryNo"));
 	
-	// Model
-	Category category = new Category();
-	category.setCategoryNo(Integer.parseInt(categoryNo));
-	
+	// Model 호출
 	CategoryDao categoryDao = new CategoryDao();
-	int delRow = categoryDao.deleteCategory(categoryNo);
-	
-	if(delRow == 1){
-		System.out.println("삭제 성공");
+	if(categoryDao.deleteCategory(categoryNo) == 1) {
 		String redirectUrl = "/admin/categoryList.jsp";
 		response.sendRedirect(request.getContextPath()+redirectUrl);
+		return;		
 	}
-	
-	
-	
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>

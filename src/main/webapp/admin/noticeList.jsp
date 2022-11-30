@@ -13,6 +13,9 @@
 	
 	// 페이징
 	int currentPage = 1;
+	if(request.getParameter("currentPage") != null) {
+		currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	}
 	int rowPerPage = 10;
 	int beginRow = (currentPage - 1) * rowPerPage;
 
@@ -36,17 +39,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<ul>
-		<li><a href="<%=request.getContextPath()%>/admin/noticeList.jsp">공지관리</a></li>
-		<li><a href="<%=request.getContextPath()%>/admin/categoryList.jsp">카테고리관리</a></li>
-		<li><a href="<%=request.getContextPath()%>/admin/memberList.jsp">멤버관리(목록, 레벨수정, 강제탈퇴)</a></li>
-	</ul>
+	<div>
+		<jsp:include page="/inc/head.jsp"></jsp:include>
+	</div>
 	<div>
 		<!-- noticeList contents... -->
 		<h1>공지사항</h1>
 		<a href="<%=request.getContextPath()%>/admin/insertNoticeForm.jsp">공지입력</a>
 		<table border="1">
 			<tr>
+				<th>번호</th>
 				<th>공지내용</th>
 				<th>공지날짜</th>
 				<th>수정</th>
@@ -56,15 +58,36 @@
 				for(Notice n : list) {
 			%>
 					<tr>
+						<td><%=n.getNoticeNo()%></td>
 						<td><%=n.getNoticeMemo()%></td>
 						<td><%=n.getCreatedate()%></td>
-						<td><a href="">수정</a></td>
-						<td><a href="">삭제</a></td>
+						<td><a href="<%=request.getContextPath()%>/admin/updateNoticeForm.jsp?noticeNo=<%=n.getNoticeNo()%>">수정</a></td>
+						<td><a href="<%=request.getContextPath()%>/admin/deleteNotice.jsp?noticeNo=<%=n.getNoticeNo()%>">삭제</a></td>
 					</tr>
 			<%		
 				}
 			%>
 		</table>
+		<div>
+			<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=1">처음</a>
+			<%
+				if(currentPage > 1) {				
+			%>
+					<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=currentPage-1%>">이전</a>
+			<%
+				}
+			%>
+				<span><%=currentPage%></span>
+			<%
+				if(currentPage < lastPage) {
+			%>
+					<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=currentPage+1%>">다음</a>	
+			<%
+				}
+			%>
+			<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=lastPage%>">마지막</a>
+		</div>
+	</div>
 	</div>
 </body>
 </html>

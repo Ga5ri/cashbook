@@ -10,7 +10,7 @@
 		return;
 	}
 	
-	String memberId = request.getParameter("memberId");
+	String memberId = loginMember.getMemberId();
 	System.out.println("memberId->>"+memberId);
 	
 	// 페이징

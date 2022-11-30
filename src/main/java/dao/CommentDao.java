@@ -10,7 +10,7 @@ import util.DBUtil;
 import vo.Comment;
 
 public class CommentDao {
-	// 입력
+	// 입력 insertCommentAction.jsp
 	public int insertComment(Comment comment) throws Exception {
 		int isResult = 0;
 		// DB연결	
@@ -30,25 +30,31 @@ public class CommentDao {
 		return isResult;
 	}
 	// 수정
-	// updateForm 답변내용 출력
-	public HashMap<String, Object> selectCommentOne(int commentNo) throws Exception {
-		HashMap<String, Object> comment = new HashMap<>();
+	// updateCommentForm.jsp 답변내용 출력
+	public Comment selectCommentOne(int commentNo) throws Exception {
+		Comment comment = new Comment();
+		String sql = "SELECT help_no helpNo, comment_memo commentMemo, updatedate, createdate FROM comment WHERE comment_no = ?";
+		
 		// DB연결
 		DBUtil dbUtil = new DBUtil();
-		Connection conn = dbUtil.getConnection();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
 		// 쿼리문
-		String sql = "SELECT comment_no commentNo, comment_memo commentMemo, updatedate, createdate FROM comment WHERE comment_no = ?";
-		PreparedStatement stmt = conn.prepareStatement(sql);
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, commentNo);
-		ResultSet rs = stmt.executeQuery();
+		rs = stmt.executeQuery();
 		if(rs.next()) {
-			comment.put("commentNo", rs.getInt("commentNo"));
-			comment.put("commentMemo", rs.getInt("commentMemo"));	
+			comment.setHelpNo(rs.getInt("helpNo"));
+			comment.setCommentMemo(rs.getString("commentMemo"));
+			comment.setCommentNo(commentNo);
 		}
 		dbUtil.close(rs, stmt, conn);
 		return comment;
 	}
-	// updateAction
+	// updateCommentAction.jsp
 	public int updateComment(Comment comment) throws Exception {
 		// DB연결	
 		DBUtil dbUtil = new DBUtil();
@@ -63,8 +69,20 @@ public class CommentDao {
 		dbUtil.close(null, stmt, conn);
 		return row;
 	}
-	// 삭제
-	public int deleteComment(int commentNo) {
-		return 0;
+	// deleteComment.jsp 삭제
+	public int deleteComment(int commentNo) throws Exception {
+		String sql = "DELETE FROM comment WHERE comment_no = ?";
+		// DB연결
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, commentNo);
+		int row = stmt.executeUpdate();
+		
+		dbUtil.close(null, stmt, conn);
+		return row;
 	}
 }

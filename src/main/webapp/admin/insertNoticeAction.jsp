@@ -9,26 +9,23 @@
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
 	}
-
+	
 	String memberId = loginMember.getMemberId();
-	String commentMemo = request.getParameter("commentMemo");
-	int helpNo = Integer.parseInt(request.getParameter("helpNo"));
-	
+	String noticeMemo = request.getParameter("noticeMemo");
+
 	// 객체생성
-	Comment comment = new Comment();
-	comment.setHelpNo(helpNo);
-	comment.setCommentMemo(commentMemo);
-	comment.setMemberId(memberId);
-	
+	Notice notice = new Notice();
+	notice.setNoticeMemo(noticeMemo);
+
 	// Model 호출
-	CommentDao commentDao = new CommentDao();
-	int isResult = commentDao.insertComment(comment);
+	NoticeDao noticeDao = new NoticeDao();
+	int isResult = noticeDao.insertNotice(notice);
 	if(isResult != 0){
-		System.out.println("추가 성공");
+		System.out.println("notice추가 성공");
 	} else {
-		System.out.println("추가 실패");
+		System.out.println("notice추가 실패");
 	}
 	
-	String redirectUrl = "/admin/helpListAll.jsp";
+	String redirectUrl = "/admin/noticeList.jsp";
 	response.sendRedirect(request.getContextPath()+redirectUrl);
 %>

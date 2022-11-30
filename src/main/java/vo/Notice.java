@@ -1,15 +1,15 @@
 package vo;
 
 public class Notice {
-	private int noticeno;
+	private int noticeNo;
 	private String noticeMemo;
 	private String updatedate;
 	private String createdate;
-	public int getNoticeno() {
-		return noticeno;
+	public int getNoticeNo() {
+		return noticeNo;
 	}
-	public void setNoticeno(int noticeno) {
-		this.noticeno = noticeno;
+	public void setNoticeNo(int noticeNo) {
+		this.noticeNo = noticeNo;
 	}
 	public String getNoticeMemo() {
 		return noticeMemo;
@@ -29,4 +29,5 @@ public class Notice {
 	public void setCreatedate(String createdate) {
 		this.createdate = createdate;
 	}
+	
 }

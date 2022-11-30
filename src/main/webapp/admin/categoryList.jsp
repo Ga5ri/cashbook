@@ -28,7 +28,7 @@
 	<div>
 		<!-- categoryList contents... -->
 		<h1>카테고리 목록</h1>
-		<a href="">카테고리 추가</a>
+		<a href="<%=request.getContextPath()%>/admin/insertCategoryForm.jsp">카테고리 추가</a>
 		<table>
 			<tr>
 				<th>번호</th>
@@ -50,10 +50,10 @@
 						<td><%=c.getUpdatedate()%></td>
 						<td><%=c.getCreatedate()%></td>
 						<td>
-							<a href="<%=request.getContextPath()%>/admin/updateCategoryForm.jsp?categoryNo=<%categoryNo()%>">수정</a>
+							<a href="<%=request.getContextPath()%>/admin/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</a>
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/admin/deleteCategoryAction.jsp?categoryNo=<%categoryNo()%>">삭제</a>
+							<a href="<%=request.getContextPath()%>/admin/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</a>
 						</td>					
 					</tr>
 			<%		

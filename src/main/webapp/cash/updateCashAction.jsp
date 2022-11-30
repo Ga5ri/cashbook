@@ -37,6 +37,6 @@
 
 
 	// View 대신 redirect
-	String targetUrl = "/cash/cashDateList.jspyear="+year+"&month="+month+"&date="+date;
+	String targetUrl = "/cash/cashDateList.jsp?year="+year+"&month="+month+"&date="+date;
 	response.sendRedirect(request.getContextPath()+targetUrl);
 %>

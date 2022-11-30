@@ -83,7 +83,7 @@ public class CashDao {
 		return list;
 	}
 	
-	// 호출 : insertCashAction.jsp
+	// 호출 : insertCashAction.jsp (가계부 입력)
 	public int insertCash(String memberId, String cashMemo, String cashDate, int categoryNo, long cashPrice) throws Exception {
 			
 		int isResult = 0;
@@ -108,7 +108,7 @@ public class CashDao {
 		return isResult;
 		}
 
-	// 호출 : updateCashAction.jsp (가계부내역 출력)
+	// 호출 : updateCash.jsp (가계부 수정시 내역 출력)
 	public HashMap<String, Object> selectCashListByCashNo(int cashNo) throws Exception{
 		HashMap<String, Object> cash = new HashMap<>();
 		// DB연결
@@ -151,7 +151,7 @@ public class CashDao {
 			return row;
 		}
 		
-		// 삭제
+		// 호출 : deleteCash.jsp (가계부 삭제)
 		public int deleteCash(int cashNo) throws Exception{
 			int row = 0;
 			// DB연결

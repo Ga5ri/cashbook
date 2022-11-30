@@ -29,6 +29,9 @@
 			<a href="<%=request.getContextPath()%>/member/updateMemberForm.jsp">닉네임 변경</a>
 			<a href="<%=request.getContextPath()%>/member/updateMemberPwForm.jsp">비밀번호 변경</a>
 		</div>
+		<div>
+			<a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
+		</div>
 	</div>
 </body>
 </html>

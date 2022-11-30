@@ -36,10 +36,8 @@
 	} else {
 		System.out.println("회원가입 실패");
 	}
-	
-	
-	String redirectUrl = "/loginForm.jsp";
 
 	// View
+	String redirectUrl = "/loginForm.jsp";
 	response.sendRedirect(request.getContextPath()+redirectUrl);
 %>

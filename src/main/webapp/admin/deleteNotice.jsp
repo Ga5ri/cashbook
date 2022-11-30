@@ -12,16 +12,16 @@
 	}
 	
 	// 공백 or null값시 리스트로 되돌리기
-	if(request.getParameter("commentNo") == null || request.getParameter("commentNo").equals("")){
-		response.sendRedirect(request.getContextPath()+"/admin/helpListAll.jsp");
+	if(request.getParameter("noticeNo") == null || request.getParameter("noticeNo").equals("")){
+		response.sendRedirect(request.getContextPath()+"/admin/noticeList.jsp");
 		return;
 	}
 
-	int commentNo = Integer.parseInt(request.getParameter("commentNo"));
+	int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 	
 	// Model 호출
-	CommentDao commentDao = new CommentDao();
-	int row = commentDao.deleteComment(commentNo);
+	NoticeDao noticeDao = new NoticeDao();
+	int row = noticeDao.deleteNotice(noticeNo);
 	if(row == 0) {
 		System.out.println("comment 삭제 실패");
 	} else {
@@ -29,6 +29,6 @@
 	}
 	
 	// View 대신 Redirect
-	String redirectUrl = "/admin/helpListAll.jsp";
+	String redirectUrl = "/admin/noticeList.jsp";
 	response.sendRedirect(request.getContextPath()+redirectUrl);
 %>

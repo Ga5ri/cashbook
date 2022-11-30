@@ -23,7 +23,7 @@
 	<form action="<%=request.getContextPath()%>/admin/insertCategoryAction.jsp" method="post">
 		<table>
 			<tr>
-				<th>categoryKind</th>
+				<th>수입/지출</th>
 			</tr>
 			<tr>
 				<td>
@@ -32,7 +32,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>CategoryName<td>
+				<td>이름<td>
 				<td><input type="text" name="categoryName"></td>
 			</tr>
 		</table>

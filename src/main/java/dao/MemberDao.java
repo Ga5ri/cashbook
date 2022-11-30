@@ -99,19 +99,42 @@ public class MemberDao {
 		return row;
 	}
 	// 닉네임 변경
-	public int updateMember(Member paramMember, String loginMemberId) throws Exception {
-		int row = 0;
+	public Member updateMember(Member paramMember) throws Exception {
+		Member loginMember = new Member();
 		// DB연결
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
 		// 쿼리문
-		String sql = "UPDATE member SET member_name = ? WHERE member_pw = PASSWORD(?) AND member_id = ?";
+		String sql = "UPDATE member SET member_name = ?, updatedate=CURDATE() WHERE member_id = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, paramMember.getMemberName());
-		stmt.setString(2, paramMember.getMemberPw());
-		stmt.setString(3, paramMember.getMemberId());
-		row = stmt.executeUpdate();		
+		stmt.setString(2, paramMember.getMemberId());
+		int row = stmt.executeUpdate();
+		System.out.println("updateRow->"+row);
+		if(row == 1) {
+			System.out.println("name 수정성공");
+			dbUtil.close(null, stmt, conn);
+			return loginMember;
+		} else {
+			System.out.println("name 수정실패");
+			dbUtil.close(null, stmt, conn);
+			return null;
+		}
+	}
 	
+	// 비밀번호 변경
+	public int updatePw(Member paramMember, String paramMemberupdatePw) throws Exception {
+		// DB연결
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		// 쿼리문
+		String sql = "UPDATE member SET member_pw = PASSWORD(?) WHERE member_id = ? AND member_pw = PASSWORD(?)";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, paramMemberupdatePw);
+		stmt.setString(2, paramMember.getMemberId());
+		stmt.setString(3, paramMember.getMemberPw());
+		int row = stmt.executeUpdate();
+		
 		dbUtil.close(null, stmt, conn);
 		return row;
 	}

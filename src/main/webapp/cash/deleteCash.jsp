@@ -21,7 +21,7 @@
 
 	CashDao cashDao = new CashDao();
 	int row = cashDao.deleteCash(cashNo);
-	System.out.println(row+"<-insertMemberAction row");
+	System.out.println(row+"<-deleteCash row");
 	if(row == 1){
 		System.out.println("내역 삭제성공");
 	}else {
@@ -30,6 +30,6 @@
 	
 
 	// View 대신 redirect
-	String targetUrl = "/cash/cashDateList.jspyear="+year+"&month="+month+"&date="+date;
+	String targetUrl = "/cash/cashDateList.jsp?year="+year+"&month="+month+"&date="+date;
 	response.sendRedirect(request.getContextPath()+targetUrl);
 %>
