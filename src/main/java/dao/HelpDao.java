@@ -16,7 +16,8 @@ public class HelpDao {
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
 		// 쿼리문
-		String sql = "SELECT help_no helpNo, member_id memberId, updatedate, createdate, help_memo helpMemo FROM help WHERE help_no = ?";
+		String sql = "SELECT help_no helpNo, member_id memberId, updatedate, createdate, help_memo helpMemo "
+				+"		FROM help WHERE help_no = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, helpNo);
 		ResultSet rs = stmt.executeQuery();
