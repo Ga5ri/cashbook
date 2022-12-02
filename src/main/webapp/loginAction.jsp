@@ -36,10 +36,10 @@
 	
 	if(resultMember != null){
 		session.setAttribute("loginMember", resultMember); // session안에 로그인 아이디 & 이름을 저장
-		redirectUrl = "/cash/cashList.jsp";
 		System.out.println("로그인 성공");
 	} 
 	
 	// View없음 대신 redirect
+	redirectUrl = "/cash/cashList.jsp";
 	response.sendRedirect(request.getContextPath()+redirectUrl);
 %>

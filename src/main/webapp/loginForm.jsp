@@ -55,8 +55,18 @@
     <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <style>
+    	.notice {
+    		padding-top: 50px;
+    	}
+    	.login {
+    		padding-bottom: 400px;
+    	}
+    </style>
 </head>
 <body class="fix-menu">
+	<section class="notice p-fixed d-flex text-center bg-primary common-img-bg">
+		<div class="notice-card card-block auth-body mr-auto ml-auto">
 	<!--  공지(5개) list 페이징 -->
 	<div>
 		<h1>공지사항</h1>
@@ -77,27 +87,30 @@
 			%>
 		</table>
 		<div>
-			<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1">처음</a>
+			<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1" class="btn">처음</a>
 			<%
 				if(currentPage > 1) {				
 			%>
-					<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage-1%>">이전</a>
+					<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage-1%>" class="btn">이전</a>
 			<%
 				}
 			%>
-				<span><%=currentPage%></span>
+				<span class="btn"><%=currentPage%></span>
 			<%
 				if(currentPage < lastPage) {
 			%>
-					<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage+1%>">다음</a>	
+					<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage+1%>" class="btn">다음</a>	
 			<%
 				}
 			%>
-			<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>">마지막</a>
+			<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>" class="btn">마지막</a>
+		</div>
 		</div>
 	</div>
+	</section>
+	
 
-    <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+    <section class="login p-fixed d-flex text-center bg-primary">
         <!-- Container-fluid starts -->
         <div class="container">
             <div class="row">
@@ -156,19 +169,6 @@
         </div>
         <!-- end of container-fluid -->
     </section>
-<![endif]-->
-    <!-- Warning Section Ends -->
-    <!-- Required Jquery -->
-    <script type="text/javascript" src="assets/js/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="assets/js/popper.js/popper.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap/js/bootstrap.min.js"></script>
-    <!-- jquery slimscroll js -->
-    <script type="text/javascript" src="assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <!-- modernizr js -->
-    <script type="text/javascript" src="assets/js/modernizr/modernizr.js"></script>
-    <script type="text/javascript" src="assets/js/modernizr/css-scrollbars.js"></script>
-    <script type="text/javascript" src="assets/js/common-pages.js"></script>
     
 </body>
 </html>
