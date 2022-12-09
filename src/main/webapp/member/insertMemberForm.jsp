@@ -29,8 +29,6 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 </head>
 <body class="fix-menu">
-       <!-- Pre-loader start -->
-    <!-- Pre-loader end -->
     <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
         <!-- Container-fluid starts -->
         <div class="container-fluid">

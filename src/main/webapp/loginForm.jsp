@@ -70,10 +70,10 @@
 	<!--  공지(5개) list 페이징 -->
 	<div>
 		<h1>공지사항</h1>
-		<table>
+		<table class="text-left">
 			<tr>
-				<th>공지내용</th>
-				<th>날짜</th>
+				<td>공지내용</td>
+				<td>날짜</td>
 			</tr>
 			<%
 				for(Notice n : list) {

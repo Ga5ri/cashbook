@@ -15,28 +15,77 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>updateMemberPwForm</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Gradient Able Bootstrap admin template made using Bootstrap 4. The starter version of Gradient Able is completely free for personal project." />
+    <meta name="keywords" content="free dashboard template, free admin, free bootstrap template, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+    <meta name="author" content="codedthemes">
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap/css/bootstrap.min.css">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="../assets/icon/themify-icons/themify-icons.css">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="../assets/icon/icofont/css/icofont.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 </head>
 <body>
-	<h1>비밀번호 변경</h1>
-	<form action="<%=request.getContextPath()%>/member/updateMemberPwAction.jsp" method="post">
-		<table>
-			<tr>
-				<td>아이디</td>
-				<td><input type="text" name="memberId" value="<%=memberId%>"></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="memberPw" value=""></td>
-			</tr>
-			<tr>
-				<td>변경할 비밀번호</td>
-				<td><input type="password" name="updatePw" value=""></td>
-			</tr>
-		</table>
-		<div>
-			<button type="submit">변경</button>
-		</div>
-	</form>
+   <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+        <!-- Container-fluid starts -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Authentication card start -->
+                    <div class="signup-card card-block auth-body mr-auto ml-auto">
+                        <form action="<%=request.getContextPath()%>/member/updateMemberPwAction.jsp" method="post" class="md-float-material">
+                            <div class="auth-box">   
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center txt-primary">비밀번호 변경</h3>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="input-group">
+                                    <input type="text" name="memberId" value="<%=memberId%>" readonly="readonly" class="form-control">
+                                    <span class="md-line"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" name="memberPw" class="form-control" placeholder="기존 PW 입력">
+                                    <span class="md-line"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" name="updatePw" class="form-control" placeholder="변경할 PW 입력"> 
+                                    <span class="md-line"></span>
+                                </div>
+                                <div class="row m-t-30">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">변경</button>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <p class="text-inverse text-left m-b-0">가계부 사이트의 회원이 되신걸 환영합니다.</p>
+                                        <p class="text-inverse text-left"><b>항상 행복하세요.</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- end of form -->
+                    </div>
+                    <!-- Authentication card end -->
+                </div>
+                <!-- end of col-sm-12 -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container-fluid -->
+    </section>
 </body>
 </html>
