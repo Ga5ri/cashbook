@@ -80,7 +80,7 @@
 			%>
 					<tr>
 						<td><%=n.getNoticeMemo()%></td>
-						<td><%=n.getCreatedate()%></td>
+						<td>[<%=n.getCreatedate()%>]</td>
 					</tr>
 			<%		
 				}

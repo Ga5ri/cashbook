@@ -14,7 +14,7 @@
 	}
 	
 	// session에 저장된 멤버(현재 로그인 사용자)
-	Member loginMember = (Member) session.getAttribute("loginMember");
+	Member loginMember = (Member)session.getAttribute("loginMember");
 	String loginMemberId = loginMember.getMemberId();
 	String loginMemberName = loginMember.getMemberName();
 	System.out.println(loginMemberId);
@@ -191,6 +191,29 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">가계부 통계</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="<%=request.getContextPath()%>/cash/cashListByYear.jsp">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">년도별 통계</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="<%=request.getContextPath()%>/cash/cashListByMonth.jsp">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">월별 통계</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>                                                 
+                                    </ul>
+                                </li>                                
                                  <li>
                                     <a href="<%=request.getContextPath()%>/help/helpList.jsp">
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
@@ -198,9 +221,10 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                            </ul>                     
+                            </ul>
+                            
                         </div>
-                    </nav>
+                   </nav>
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
                             <!-- Main-body start -->
@@ -211,8 +235,8 @@
                                         <div class="card-block">
                                             <h5 class="m-b-10">가계부 사이트</h5>
                                             <p class="m-b-10"><%=loginMemberName%>님 환영합니다. 사이트 이용중 추가 문의사항이나 불편사항은 고객센터 접수 부탁드립니다.</p>
-                                        </div>
-                                    </div>
+                                        </div>                                                                         
+                                    </div>      
                                     <!-- Page-header end -->
                                     
                                 <!-- Page-body start -->

@@ -15,8 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- Meta -->
-    <meta charset="utf-8">
+	<!-- Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="Gradient Able Bootstrap admin template made using Bootstrap 4. The starter version of Gradient Able is completely free for personal project." />

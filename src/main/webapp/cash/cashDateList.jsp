@@ -57,6 +57,14 @@
 	<!-- Style.css -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="../assets/css/jquery.mCustomScrollbar.css">
+	<style>
+		.headfont {
+			font-size: 20px;
+		}
+		.ct {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 <div id="pcoded" class="pcoded">
@@ -183,27 +191,31 @@
                                                         </div>
                                                         <div class="card-block">
                                                                 <div class="form-group row">            											
-																		   <table class="table">
-																				<tr>
-																					<th>수입/지출</th>
-																					<th>분류</th>
-																					<th>금액</th>
-																					<th>내용</th>
-																					<th>수정</th>
-																					<th>삭제</th>
-																				</tr>
+																		   <table class="table table-bordered">
+																		   		<thead class="bg-info headfont">
+																					<tr>
+																						<th>수입/지출</th>
+																						<th>분류</th>
+																						<th>금액</th>
+																						<th>내용</th>
+																						<th>수정</th>
+																						<th>삭제</th>
+																					</tr>
+																				</thead>
 																				<%
 																					for(HashMap<String, Object> m : list){
 																						int cashNo = (Integer)m.get("cashNo"); // 수정 및 삭제를 위해 cashNo 받아옴
 																				%>
+																					<tbody>
 																						<tr>
 																							<td><%=m.get("categoryKind")%></td>
 																							<td><%=m.get("categoryName")%></td>
 																							<td><%=m.get("cashPrice")%></td>
 																							<td><%=m.get("cashMemo")%></td>
-																							<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=cashNo%>&year=<%=year%>&month=<%=month%>&date=<%=date%>">수정</a></td>
-																							<td><a href="<%=request.getContextPath()%>/cash/deleteCash.jsp?cashNo=<%=cashNo%>&year=<%=year%>&month=<%=month%>&date=<%=date%>">삭제</a></td>
+																							<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=cashNo%>&year=<%=year%>&month=<%=month%>&date=<%=date%>" class="btn btn-primary btn-sm">수정</a></td>
+																							<td><a href="<%=request.getContextPath()%>/cash/deleteCash.jsp?cashNo=<%=cashNo%>&year=<%=year%>&month=<%=month%>&date=<%=date%>" class="btn btn-danger btn-sm">삭제</a></td>
 																						</tr>
+																					</tbody>
 																				<%
 																					}
 																				%>
@@ -226,17 +238,18 @@
 												<input type="hidden" name="year" value="<%=year%>">
 												<input type="hidden" name="month" value="<%=month%>">
 												<input type="hidden" name="date" value="<%=date%>">
-                                                <table class="table">
+                                                <table class="table table-bordered">
 												<!-- memberId,년,월,일 hidden 처리 -->
+												
 													<tr>
-														<td>날짜</td>
+														<td class="ct">날짜</td>
 														<td>
 															<input type="text" name="cashDate" value="<%=year%>-<%=month%>-<%=date%>" readonly="readonly">
 														</td>
 													</tr>
-													
+												
 													<tr>
-														<td>(수입/지출)분류</td>
+														<td class="ct">(수입/지출)분류</td>
 														<td>
 															<select name="categoryNo">
 															<%
@@ -252,11 +265,11 @@
 														</td>
 													</tr>		
 													<tr>
-														<td>금액</td>
+														<td class="ct">금액</td>
 														<td><input type="text" name="cashPrice"></td>
 													</tr>
 													<tr>
-														<td>내용</td>
+														<td class="ct">내용</td>
 														<td><textarea rows="3" cols="50" name="cashMemo"></textarea></td>
 													</tr>													                                              
                                                 </table>

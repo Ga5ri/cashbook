@@ -61,7 +61,7 @@
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="password" name="memberPw" class="form-control" placeholder="Choose Password"> 
+                                    <input type="password" name="memberPw" class="form-control" placeholder="PASSWORD 입력"> 
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="row m-t-30">
