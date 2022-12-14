@@ -165,7 +165,6 @@ public class StatsDao {// select, insert, update, delete
 					e.printStackTrace();
 				}
 			}
-
 			return list;      
 		}
 	

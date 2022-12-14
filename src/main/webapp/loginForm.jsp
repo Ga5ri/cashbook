@@ -64,111 +64,135 @@
     	}
     </style>
 </head>
-<body class="fix-menu">
-	<section class="notice p-fixed d-flex text-center bg-primary common-img-bg">
-		<div class="notice-card card-block auth-body mr-auto ml-auto">
-	<!--  공지(5개) list 페이징 -->
-	<div>
-		<h1>공지사항</h1>
-		<table class="text-left">
-			<tr>
-				<td>공지내용</td>
-				<td>날짜</td>
-			</tr>
-			<%
-				for(Notice n : list) {
-			%>
-					<tr>
-						<td><%=n.getNoticeMemo()%></td>
-						<td>[<%=n.getCreatedate()%>]</td>
-					</tr>
-			<%		
-				}
-			%>
-		</table>
+	<body class="fix-menu">
+		<section class="notice p-fixed d-flex text-center bg-primary common-img-bg">
+			<div class="notice-card card-block auth-body mr-auto ml-auto">
+		<!--  공지(5개) list 페이징 -->
 		<div>
-			<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1" class="btn">처음</a>
-			<%
-				if(currentPage > 1) {				
-			%>
-					<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage-1%>" class="btn">이전</a>
-			<%
-				}
-			%>
-				<span class="btn"><%=currentPage%></span>
-			<%
-				if(currentPage < lastPage) {
-			%>
-					<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage+1%>" class="btn">다음</a>	
-			<%
-				}
-			%>
-			<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>" class="btn">마지막</a>
+			<h1>공지사항</h1>
+			<table class="text-left">
+				<tr>
+					<td>공지내용</td>
+					<td>날짜</td>
+				</tr>
+				<%
+					for(Notice n : list) {
+				%>
+						<tr>
+							<td><%=n.getNoticeMemo()%></td>
+							<td>[<%=n.getCreatedate()%>]</td>
+						</tr>
+				<%		
+					}
+				%>
+			</table>
+			<div>
+				<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1" class="btn">처음</a>
+				<%
+					if(currentPage > 1) {				
+				%>
+						<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage-1%>" class="btn">이전</a>
+				<%
+					}
+				%>
+					<span class="btn"><%=currentPage%></span>
+				<%
+					if(currentPage < lastPage) {
+				%>
+						<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage+1%>" class="btn">다음</a>	
+				<%
+					}
+				%>
+				<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>" class="btn">마지막</a>
+			</div>
+			</div>
 		</div>
-		</div>
-	</div>
-	</section>
-	
-
-    <section class="login p-fixed d-flex text-center bg-primary">
-        <!-- Container-fluid starts -->
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <!-- Authentication card start -->
-                    <div class="login-card card-block auth-body mr-auto ml-auto">
-                        <form action="<%=request.getContextPath()%>/loginAction.jsp" method="post" class="md-float-material">
-                            <div class="auth-box">
-                                <div class="row m-b-20">
-                                    <div class="col-md-12">
-                                        <h3 class="text-left txt-primary">로그인</h3>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="input-group">
-                                    <input type="text" name="memberId" class="form-control" placeholder="ID">
-                                    <span class="md-line"></span>
-                                </div>
-                                <div class="input-group">
-                                    <input type="password" name="memberPw" class="form-control" placeholder="Password">
-                                    <span class="md-line"></span>
-                                </div>
-                                <div class="row m-t-25 text-left">
-                                    <div class="col-sm-7 col-xs-12">
-                                        <div class="checkbox-fade fade-in-primary">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-xs-12 forgot-phone text-right">
-                                	<a href="<%=request.getContextPath()%>/member/insertMemberForm.jsp" class="text-right f-w-600 text-inverse"> 회원가입</a>
-                                </div>
-                                <div class="row m-t-30">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">로그인</button>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p class="text-inverse text-left m-b-0">가계부 관리사이트에 오신것을 환영합니다.</p>
-                                        <p class="text-inverse text-left"><b>함께 알뜰해지는 시간</b></p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- end of form -->
-                    </div>
-                    <!-- Authentication card end -->
-                </div>
-                <!-- end of col-sm-12 -->
-            </div>
-            <!-- end of row -->
-        </div>
-        <!-- end of container-fluid -->
-    </section>
-    
-</body>
+		</section>	
+		<!-- login form -->
+	    <section class="login p-fixed d-flex text-center bg-primary">
+	        <!-- Container-fluid starts -->
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-12">
+	                    <!-- Authentication card start -->
+	                    <div class="login-card card-block auth-body mr-auto ml-auto">
+	                        <form id="signinForm" action="<%=request.getContextPath()%>/loginAction.jsp" method="post" class="md-float-material">
+	                            <div class="auth-box">
+	                                <div class="row m-b-20">
+	                                    <div class="col-md-12">
+	                                        <h3 class="text-left txt-primary">로그인</h3>
+	                                    </div>
+	                                </div>
+	                                <hr/>
+	                                <div class="input-group">
+	                                    <input type="text" id="memberId" name="memberId" class="form-control" placeholder="ID" value="">
+	                                    <span class="md-line"></span>
+	                                </div>
+	                                <div class="input-group">
+	                                    <input type="password" id="memberPw" name="memberPw" class="form-control" placeholder="Password">
+	                                    <span class="md-line"></span>
+	                                </div>
+	                                <div class="row m-t-25 text-left">
+	                                    <div class="col-sm-7 col-xs-12">
+	                                        <div class="checkbox-fade fade-in-primary">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="col-sm-12 col-xs-12 forgot-phone text-right">
+	                                	<a href="<%=request.getContextPath()%>/member/insertMemberForm.jsp" class="text-right f-w-600 text-inverse"> 회원가입</a>
+	                                </div>
+	                                <div class="row m-t-30">
+	                                    <div class="col-md-12">
+	                                        <button type="button" id="signinBtn" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">로그인</button>
+	                                    </div>
+	                                </div>
+	                                <hr/>
+	                                <div class="row">
+	                                    <div class="col-md-10">
+	                                        <p class="text-inverse text-left m-b-0">가계부 관리사이트에 오신것을 환영합니다.</p>
+	                                        <p class="text-inverse text-left"><b>함께 알뜰해지는 시간</b></p>
+	                                    </div>
+	                                    <div class="col-md-2">
+	                                        <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </form>
+	                        <!-- end of form -->
+	                    </div>
+	                    <!-- Authentication card end -->
+	                </div>
+	                <!-- end of col-sm-12 -->
+	            </div>
+	            <!-- end of row -->
+	        </div>
+	        <!-- end of container-fluid -->
+		</section>
+		<script>
+		let signinBtn = document.querySelector('#signinBtn');
+		   
+		signinBtn.addEventListener('click', function(){
+			// 디버깅
+		    console.log('siginBtn clik!');
+		    
+		    // ID 폼 유효성 검사
+		    let memberId = document.querySelector('#memberId');
+		    if(memberId.value == '') {
+				alert('id를 입력하세요');
+				memberId.focus(); // 브라우저의 커스를 id태그로 이동
+				return;
+		    }
+		    
+		    // PW 폼 유효성 검사
+		    let memberPw = document.querySelector('#memberPw');
+		    if(memberPw.value == '') {
+				alert('pw를 확인하세요');
+				memberPw.focus();
+				return;
+		    }	
+		     let signinForm = document.querySelector('#signinForm');
+		     signinForm.submit(); 
+		});		    
+		</script>
+	</body>
 </html>
