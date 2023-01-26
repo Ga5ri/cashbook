@@ -125,11 +125,11 @@
 	                                </div>
 	                                <hr/>
 	                                <div class="input-group">
-	                                    <input type="text" id="memberId" name="memberId" class="form-control" placeholder="ID" value="">
+	                                    <input type="text" id="memberId" name="memberId" class="form-control" placeholder="ID" value="test">
 	                                    <span class="md-line"></span>
 	                                </div>
 	                                <div class="input-group">
-	                                    <input type="password" id="memberPw" name="memberPw" class="form-control" placeholder="Password">
+	                                    <input type="password" id="memberPw" name="memberPw" class="form-control" placeholder="Password" value="1234">
 	                                    <span class="md-line"></span>
 	                                </div>
 	                                <div class="row m-t-25 text-left">
