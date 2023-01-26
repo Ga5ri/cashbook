@@ -1,4 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "vo.*" %>
+<%@ page import = "dao.*" %>
+<%@ page import = "java.util.*" %>
+<%
+	// session에 저장된 멤버(현재 로그인 사용자)
+	Member loginMember = (Member)session.getAttribute("loginMember");
+	if(loginMember == null) {
+		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
+		return;
+	}
+	String memberId = loginMember.getMemberId();
+	String loginMemberName = loginMember.getMemberName();
+	HelpDao helpDao = new HelpDao();
+	ArrayList<HashMap<String, Object>> list = helpDao.selectHelpList(memberId);
+%>
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
