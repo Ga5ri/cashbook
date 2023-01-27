@@ -3,12 +3,70 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import util.DBUtil;
+import vo.Help;
 
 public class HelpDao {
+	// 멤버 문의내역 삭제
+	public int deleteHelp(int helpNo) throws Exception {
+		int row = 0;
+		// DB연결
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		// 쿼리문
+		String sql = "DELETE FROM help WHERE help_no = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, helpNo);
+		
+		row = stmt.executeUpdate();
+
+		dbUtil.close(null, stmt, conn);
+		return row;
+	}
+	
+	// 멤버 문의내역 출력(updateHelpForm)
+	public HashMap<String, Object> selectHelpOne(int helpNo) throws Exception{
+		HashMap<String, Object> help = new HashMap<>();
+		// DB연결
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		// 쿼리문
+		String sql = "SELECT help_no helpNo, help_memo helpMemo FROM help WHERE help_no = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, helpNo);
+		ResultSet rs = stmt.executeQuery();
+		
+		if(rs.next()) { 
+			help.put("helpNo", rs.getInt("helpNo"));
+			help.put("helpMemo", rs.getString("helpMemo"));
+		}
+		dbUtil.close(rs, stmt, conn);
+		return help;
+	}
+	
+	// 멤버 문의내역 수정(updateHelpAction)
+	public int updateHelp(int helpNo, String helpMemo) throws Exception {
+		int row = 0;
+		// DB연결
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		// 쿼리문
+		String sql = "UPDATE help SET help_memo = ?, updatedate = NOW() WHERE help_no =?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, helpMemo);
+		stmt.setInt(2, helpNo);
+		
+		row = stmt.executeUpdate();
+		
+		dbUtil.close(null, stmt, conn);
+		return row;	
+	}
+	
+	// 관리자
 	// 문의내용 출력
 	public HashMap<String, Object> selectHelpListByHelpNo(int helpNo) throws Exception{
 		HashMap<String, Object> help = new HashMap<>();
@@ -20,6 +78,7 @@ public class HelpDao {
 					+" FROM help WHERE help_no = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, helpNo);
+		System.out.println(helpNo+":helpNo");
 		ResultSet rs = stmt.executeQuery();
 		
 		if(rs.next()) { 
@@ -30,7 +89,7 @@ public class HelpDao {
 		dbUtil.close(rs, stmt, conn);
 		return help;
 		}
-	
+	// 관리자
 	// 마지막 페이지를 구하려면 전체 행
 	public int selectHelpCount() throws Exception {
 		int count = 0;

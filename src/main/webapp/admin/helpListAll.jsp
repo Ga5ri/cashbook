@@ -198,14 +198,14 @@
 																			<%
 																				if(m.get("commentMemo") == null) {
 																			%>
-																					<a href="<%=request.getContextPath()%>/admin/insertCommentForm.jsp?helpNo=<%=m.get("helpNo")%>">
+																					<a href="<%=request.getContextPath()%>/admin/insertCommentForm.jsp?helpNo=<%=m.get("helpNo")%>" class="btn btn-info btn-sm">
 																						답변입력
 																					</a>
 																			<%		
 																				} else {
 																			%>
-																					<a href="<%=request.getContextPath()%>/admin/updateCommentForm.jsp?commentNo=<%=m.get("commentNo")%>">답변수정</a>
-																					<a href="<%=request.getContextPath()%>/admin/deleteComment.jsp?commentNo=<%=m.get("commentNo")%>">답변삭제</a>
+																					<a href="<%=request.getContextPath()%>/admin/updateCommentForm.jsp?commentNo=<%=m.get("commentNo")%>" class="btn btn-primary btn-sm">답변수정</a>
+																					<a href="<%=request.getContextPath()%>/admin/deleteComment.jsp?commentNo=<%=m.get("commentNo")%>" class="btn btn-danger btn-sm">답변삭제</a>
 																			<%		
 																				}
 																			%>

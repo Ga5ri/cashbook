@@ -125,7 +125,8 @@
                                                 <!-- Basic Form Inputs card start -->
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h5>멤버 관리</h5>
+                                                        <h5>카테고리 관리</h5>
+                                                        <a href="<%=request.getContextPath()%>/admin/insertCategoryForm.jsp" class="btn btn-outline-dark">카테고리 추가</a>
                                                         <div class="card-header-right"><i
                                                             class="icofont icofont-spinner-alt-5"></i></div>
 
@@ -156,10 +157,10 @@
 																		<td><%=c.getUpdatedate()%></td>
 																		<td><%=c.getCreatedate()%></td>
 																		<td>
-																			<a href="<%=request.getContextPath()%>/admin/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</a>
+																			<a href="<%=request.getContextPath()%>/admin/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>" class="btn btn-primary btn-sm">수정</a>
 																		</td>
 																		<td>
-																			<a href="<%=request.getContextPath()%>/admin/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</a>
+																			<a href="<%=request.getContextPath()%>/admin/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>" class="btn btn-danger btn-sm">삭제</a>
 																		</td>					
 																	</tr>
 															<%		

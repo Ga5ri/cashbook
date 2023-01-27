@@ -142,8 +142,7 @@
                                                 <!-- Basic Form Inputs card start -->
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h5>카테고리 관리</h5>
-                                                        <a href="<%=request.getContextPath()%>/admin/insertCategoryForm.jsp" class="btn btn-outline-dark">카테고리 추가</a>
+                                                        <h5>멤버 관리</h5>
                                                         <div class="card-header-right"><i
                                                             class="icofont icofont-spinner-alt-5"></i></div>
 
@@ -194,10 +193,10 @@
 																					<option value="0">0</option>
 																					<option value="1">1</option>
 																				</select>
-																				<button type="submit">레벨수정</button>
+																				<button type="submit" class="btn btn-primary btn-sm">레벨수정</button>
 																			</form>
 																		</td>
-																		<td><a href="<%=request.getContextPath()%>/admin/deleteMemberAction.jsp?memberId=<%=m.getMemberId()%>">강퇴</a></td>
+																		<td><a href="<%=request.getContextPath()%>/admin/deleteMemberAction.jsp?memberId=<%=m.getMemberId()%>" class="btn btn-danger btn-sm">강퇴</a></td>
 																	</tr>
 															<%		
 																}

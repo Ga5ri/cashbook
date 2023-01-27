@@ -42,6 +42,7 @@
 	                    <!-- Authentication card start -->
 	                    <div class="signup-card card-block auth-body mr-auto ml-auto">
 	                        <form id="helpForm" action="<%=request.getContextPath()%>/help/insertHelpAction.jsp" method="post" class="md-float-material">
+	                        
 	                            <div class="auth-box">   
 	                                <div class="row m-b-20">
 	                                    <div class="col-md-12">

@@ -9,8 +9,11 @@
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
 	}
+	
 	String memberId = loginMember.getMemberId();
 	String loginMemberName = loginMember.getMemberName();
+	
+	// Model 호출
 	HelpDao helpDao = new HelpDao();
 	ArrayList<HashMap<String, Object>> list = helpDao.selectHelpList(memberId);
 %>
@@ -112,7 +115,8 @@
                                     <div class="page-header card">
                                         <div class="card-block">
                                             <h5 class="m-b-10">고객센터</h5>
-                                            <p class="m-b-10">사용중 문의사항이나 불편사항을 남겨주시면 관리자가 확인 후 답변해드립니다.</p>                                       
+                                            <p class="m-b-10">사용중 문의사항이나 불편사항을 남겨주시면 관리자가 확인 후 답변해드립니다</p>
+                                            <p class="m-b-10">답변이 완료된 문의사항에 대해서는 수정 및 삭제가 불가능 합니다.</p>                                       
                                         </div>
                                     </div>
                                     <!-- Page-header end -->
@@ -140,6 +144,7 @@
 																		   <table class="table table-hover table-bordered">
 																		   	<thead class="bg-info">
 																		      <tr class="headfont">
+																		      	<th>문의번호</th>
 																		         <th>문의내용</th>
 																		         <th>문의날짜</th>
 																		         <th>답변내용</th>
@@ -153,6 +158,7 @@
 																		      %>
 																		      	<tbody>
 																		            <tr>
+																		            	<td><%=m.get("helpNo")%></td>
 																		               <td><%=m.get("helpMemo")%></td>
 																		               <td><%=m.get("helpCreatedate")%></td>
 																		               <td>
@@ -185,7 +191,7 @@
 																			               <%
 																			                  if(m.get("commentMemo") == null) {
 																			               %>
-																			                     <a href="">수정</a>   
+																			                     <a href="<%=request.getContextPath()%>/help/updateHelpForm.jsp?helpNo=<%=m.get("helpNo")%>" class="btn btn-primary btn-sm">수정</a>   
 																			               <%      
 																			                  } else {
 																			               %>
@@ -198,7 +204,7 @@
 																			               <%
 																			                  if(m.get("commentMemo") == null) {
 																			               %>
-																			                     <a href="">삭제</a>   
+																			                     <a href="<%=request.getContextPath()%>/help/deleteHelp.jsp?helpNo=<%=m.get("helpNo")%>" class="btn btn-danger btn-sm">삭제</a>   
 																			               <%      
 																			                  } else {
 																			               %>

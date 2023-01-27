@@ -139,7 +139,7 @@
                         <div class="pcoded-inner-navbar main-menu">
                             
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
-                            <ul class="pcoded-item pcoded-left-item">
+                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
                                     <a href="<%=request.getContextPath()%>/cash/cashList.jsp">
                                         <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
@@ -147,6 +147,29 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">가계부 통계</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="<%=request.getContextPath()%>/cash/cashListByYear.jsp">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">년도별 통계</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="<%=request.getContextPath()%>/cash/cashListByMonth.jsp">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">월별 통계</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>                                                 
+                                    </ul>
+                                </li>                                
                                  <li>
                                     <a href="<%=request.getContextPath()%>/help/helpList.jsp">
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
@@ -154,7 +177,7 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                            </ul>                     
+                            </ul>
                         </div>
                     </nav>
                     <div class="pcoded-content">
@@ -281,22 +304,22 @@
                                         </div>
                                     </div>
                                     <!-- Inverse table card end -->                                                       
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- Page body end -->
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Main-body end -->
-                                                                <div id="styleSelector">
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- Page body end -->
+                          </div>
+                      </div>
+                      <!-- Main-body end -->
+                        <div id="styleSelector">
 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Required Jquery -->
 <script type="text/javascript" src="../assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="../assets/js/jquery-ui/jquery-ui.min.js"></script>

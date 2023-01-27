@@ -72,8 +72,7 @@
 	                                <hr/>
 	                                <div class="row">
 	                                    <div class="col-md-10">
-	                                        <p class="text-inverse text-left m-b-0">가계부 사이트의 회원이 되신걸 환영합니다.</p>
-	                                        <p class="text-inverse text-left"><b>항상 행복하세요.</b></p>
+	                                        <p class="text-inverse text-left"><b>변경할 닉네임과 비밀번호를 입력해주세요.</b></p>
 	                                    </div>
 	                                </div>
 	                            </div>

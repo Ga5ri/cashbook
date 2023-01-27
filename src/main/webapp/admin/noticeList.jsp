@@ -170,8 +170,8 @@
 																		<td><%=n.getNoticeNo()%></td>
 																		<td><%=n.getNoticeMemo()%></td>
 																		<td><%=n.getCreatedate()%></td>
-																		<td><a href="<%=request.getContextPath()%>/admin/updateNoticeForm.jsp?noticeNo=<%=n.getNoticeNo()%>">수정</a></td>
-																		<td><a href="<%=request.getContextPath()%>/admin/deleteNotice.jsp?noticeNo=<%=n.getNoticeNo()%>">삭제</a></td>
+																		<td><a href="<%=request.getContextPath()%>/admin/updateNoticeForm.jsp?noticeNo=<%=n.getNoticeNo()%>" class="btn btn-primary btn-sm">수정</a></td>
+																		<td><a href="<%=request.getContextPath()%>/admin/deleteNotice.jsp?noticeNo=<%=n.getNoticeNo()%>" class="btn btn-danger btn-sm">삭제</a></td>
 																	</tr>
 															<%		
 																}

@@ -121,7 +121,7 @@
                                     <div class="page-header card">
                                         <div class="card-block">
                                             <h5 class="m-b-10">수입/지출 통계</h5>
-                                            <p class="m-b-10">월별로 수입 및 지출 통계 내역입니다.</p>                                       
+                                            <p class="m-b-10">월별 수입 및 지출 통계 내역입니다.</p>                                       
                                         </div>
                                     </div>
                                     <!-- Page-header end -->
