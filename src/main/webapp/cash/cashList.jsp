@@ -185,47 +185,47 @@
 	                                    </div>      
 	                                    <!-- Page-header end -->
 	                                    
-	                                <!-- Page-body start -->
-	                                <div class="page-body">
-	                                    <!-- Basic table card start -->
-	                                    <div class="card">
-	                                        <div class="card-header">
-	                                            <h5>가계부 캘린더</h5>
-	                                            <div class="card-header-right">
-													<ul class="list-unstyled card-option">
-														<li><i class="fa fa-chevron-left"></i></li>
-														<li><i class="fa fa-window-maximize full-card"></i></li>
-														<li><i class="fa fa-minus minimize-card"></i></li>
-														<li><i class="fa fa-refresh reload-card"></i></li>
-														<li><i class="fa fa-times close-card"></i></li>
-													</ul>
-												</div>
-	
-	                                        </div>
-	                                        <div class="card-block table-border-style">
-	                                            <div class="table-responsive">
-		                                            <div class="text-center">
-														<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>" style="float: left" class="btn btn-round btn-outline-primary">
-															&#8701;이전달
-														</a>
-														<sapn class="cn"><%=year%> 년 <%=month+1%> 월</sapn>
-														<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>" style="float: right" class="btn btn-round btn-outline-primary">
-															다음달&#8702;
-														</a>
+		                                <!-- Page-body start -->
+		                                <div class="page-body">
+		                                    <!-- Basic table card start -->
+		                                    <div class="card">
+		                                        <div class="card-header">
+		                                            <h5>가계부 캘린더</h5>
+		                                            <div class="card-header-right">
+														<ul class="list-unstyled card-option">
+															<li><i class="fa fa-chevron-left"></i></li>
+															<li><i class="fa fa-window-maximize full-card"></i></li>
+															<li><i class="fa fa-minus minimize-card"></i></li>
+															<li><i class="fa fa-refresh reload-card"></i></li>
+															<li><i class="fa fa-times close-card"></i></li>
+														</ul>
 													</div>
-													<table class="table">
-														<thead class="bg-primary text-center">
-															<tr>
-																<th>일</th>
-																<th>월</th>
-																<th>화</th>
-																<th>수</th>
-																<th>목</th>
-																<th>금</th>
-																<th>토</th>
-															</tr>
-														</thead>
-														<tbody>
+		
+		                                        </div>
+		                                        <div class="card-block table-border-style">
+		                                            <div class="table-responsive">
+			                                            <div class="text-center">
+															<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>" style="float: left" class="btn btn-round btn-outline-primary">
+																&#8701;이전달
+															</a>
+															<sapn class="cn"><%=year%> 년 <%=month+1%> 월</sapn>
+															<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>" style="float: right" class="btn btn-round btn-outline-primary">
+																다음달&#8702;
+															</a>
+														</div>
+														<table class="table">
+															<thead class="bg-primary text-center">
+																<tr>
+																	<th>일</th>
+																	<th>월</th>
+																	<th>화</th>
+																	<th>수</th>
+																	<th>목</th>
+																	<th>금</th>
+																	<th>토</th>
+																</tr>
+															</thead>
+															<tbody>
 																<% 
 																	for(int i=1; i<=totalTd; i++){
 																%>
@@ -247,7 +247,7 @@
 																					%>
 																								(<%=(String)(m.get("categoryKind"))%>)
 																								<%=(Long)(m.get("cashPrice"))%>원
-	
+		
 																								<br>
 																					<%	
 																							}
@@ -272,15 +272,15 @@
 	                                        	</div>
 	                                    	</div>
 	                                	</div>
-	                                	<!-- Page-body end -->
-	                            	</div>
-	                        	</div>
-	                        <!-- Main-body end -->
-	                    	</div>
-	                	</div>
-	            	</div>
-	        	</div>
-	    	</div>
+                               			<!-- Page-body end -->
+	                          		</div>
+		                       	</div>
+	                       		<!-- Main-body end -->
+		                   	</div>
+		               	</div>
+		           	</div>
+		       	</div>
+		   	</div>
 		</div>
 		<script type="text/javascript" src="../assets/js/jquery/jquery.min.js"></script>
 		<script type="text/javascript" src="../assets/js/jquery-ui/jquery-ui.min.js"></script>
